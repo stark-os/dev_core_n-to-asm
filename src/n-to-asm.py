@@ -197,7 +197,7 @@ def main(args):
 	for s in sdls:
 		rawName = os.path.basename(s).split('.')[0]
 		cmd.append("-l" + rawName)                  #remove ALL extensions
-		os.system("ln -s " + s + " " + CWD + "/.n-to-asm/lib" + rawname + ".so")
+		os.system("ln -s " + s + " " + CWD + "/.n-to-asm/lib" + rawName + ".so")
 
 	#src
 	writeFile(".n-to-asm/tmp.c", srcSum)
