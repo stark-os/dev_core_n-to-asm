@@ -1,0 +1,130 @@
+t0c N to ASM Compiler
+
+l Compiler from \bN\b programs into \bAssembly\b (ASM).
+
+b
+b
+
+
+
+
+t1 Overview
+
+p This compiler is meant to be \beasy to use\b as much as possible. \
+Though not included in stark distributions by default, it is one of \
+the \ucore\u development tools required to build Stark OS from scratch.
+
+
+
+
+t1 Compatibility
+
+t2 Target
+
+l Here is all the requirement to \brun\b this compiler:
+- Linux based OS
+-
+- Core SDL library, accessible at runtime
+Available in \lmain Stark OS packs\lhttps://github.com/stark-os/main/-apps/latest/\l
+-
+
+
+t2 Build requirements
+
+l Here is all the requirement to \bbuild\b this compiler:
+- Linux based OS
+-
+- git CLI
+-
+- Core SDL library, accessible at runtime
+Available in \lmain Stark OS packs\lhttps://github.com/stark-os/main/-apps/latest/\l
+-
+
+
+
+t1 Use
+
+t2 Install
+
+p If you have downloaded the compiler, you will have to extract it \
+completely to see a directory containing: \mn-to-asm.elf\m. \
+This is your ready-to-use application directory so make sure to keep \
+it somewhere appropriate as long as you need it.
+
+p Although you can directly use the compiler as is, I recommend to \
+create a link to it somewhere among the directories of your \mPATH\m \
+environment variable. That way, you will be able to access it as any \
+other shell command:
+"bash
+#example on Stark OS system
+ln --symbolic /MY/PATH/TO/n-to-asm.elf /usr/$USR/.cmd/n-to-asm
+"
+l Compiler is successfully installed.
+
+
+t2 Usage
+
+p Then, you can compile directly by giving some N files as argument:
+" bash
+n-to-asm prgm1.n,pgrm2.n
+"
+p Result will have the same name as the 1st given file, except for \
+the extension that will be turned into \m.asm\m.
+
+p Lots of options can be provided for different purposes. \
+Check out the help menu for more information:
+" bash
+n-to-asm --help
+"
+l There you go.
+
+
+t2 Uninstall
+
+p To uninstall, you only have to remove the application directory \
+you have used when installing. Also, if you created a link to access \
+the compiler as a variable, you should remove it as well:
+" bash
+#using the same example on Stark OS system
+rm /usr/$USR/.cmd/n-to-asm
+"
+l Compiler is successfully uninstalled.
+
+
+
+
+t1 Build process
+
+l To build the compiler yourself, simply run:
+" bash
+bld/build
+"
+p The resulting files generated are in the \mout/\m directory. \
+You may find more than what is inside the downloadable package files. \
+However, you should not have anything missing.
+
+l Directory \mapp/\m gives you shortcuts to all executable result.
+
+l Also, this compiler can be built directly under the ready-to-use \
+stark package format (same as downloadable resources):
+" bash
+bld/build-pkg
+"
+l The resulting package is also in the \mout\m directory.
+
+
+
+b
+
+l This is it for this compiler,
+
+l Remember, this is FREE SOFTWARE: Please respect the work done.
+
+l Enjoy !
+
+b
+b
+
+l \iContact: \lhttps://github.com/stark-os\l\l\i
+
+l Let's Code !\arBy I.A.

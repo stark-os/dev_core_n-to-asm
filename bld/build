@@ -1,0 +1,44 @@
+#!/bin/bash
+
+
+
+
+# -------- DEFINITIONS --------
+
+#exit on error
+set -e
+
+#current executable directory
+CXD=$(dirname $(readlink -f $0))
+pCXD=$(dirname $CXD)
+
+#paths
+SRC=$pCXD/src
+OUT=$pCXD/out
+TMP=$OUT/tmp
+
+
+
+
+
+
+# -------- PREPARE ENVIRONMENT --------
+
+#clean
+$CXD/clean
+
+#remove previous blds
+rm --force $OUT/n-to-asm.elf
+
+#tmp dir
+[[ ! -d $TMP ]] && mkdir --parents $TMP
+
+
+
+
+
+
+# -------- EXECUTION --------
+
+#copy as if it was a real ELF build
+cp $SRC/n-to-asm.py $OUT/n-to-asm.elf
