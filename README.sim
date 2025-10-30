@@ -25,7 +25,7 @@ l Here is all the requirement to \brun\b this compiler:
 - Linux based OS
 -
 - Core SDL library, accessible at runtime
-Available in \lmain Stark OS packs\lhttps://github.com/stark-os/main/-apps/latest/\l
+Available in \lhttps://github.com/stark-os/main/-apps/latest/\lmain Stark OS packs\l
 -
 
 
@@ -37,7 +37,7 @@ l Here is all the requirement to \bbuild\b this compiler:
 - git CLI
 -
 - Core SDL library, accessible at runtime
-Available in \lmain Stark OS packs\lhttps://github.com/stark-os/main/-apps/latest/\l
+Available in \lhttps://github.com/stark-os/main/-apps/latest/\lmain Stark OS packs\l
 -
 
 
