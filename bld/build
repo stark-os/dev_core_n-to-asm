@@ -28,7 +28,7 @@ TMP=$OUT/tmp
 $CXD/clean
 
 #remove previous blds
-rm --force $OUT/n-to-asm.elf
+rm --force $OUT/c-to-asm.elf
 
 #tmp dir
 [[ ! -d $TMP ]] && mkdir --parents $TMP
@@ -41,4 +41,4 @@ rm --force $OUT/n-to-asm.elf
 # -------- EXECUTION --------
 
 #copy as if it was a real ELF build
-cp $SRC/n-to-asm.py $OUT/n-to-asm.elf
+cp $SRC/c-to-asm.py $OUT/c-to-asm.elf

@@ -85,26 +85,26 @@ def main(args):
 
 			#help menu
 			if args[a] in ("-h", "--help"):
-				print("Usage: n-to-asm [option] <src1.n,src2.n...> [sdl1.so.cfg,sdl2.so.cfg...]")
+				print("Usage: c-to-asm [option] <src1.c,src2.c...> [sdl1.so.cfg,sdl2.so.cfg...]")
 				print()
-				print("Compile N programs into ASM.")
+				print("Compile C programs into ASM.")
 				print()
-				print("All given N sources will be added together as it was one big file.")
+				print("All given C sources will be added together as it was one big file.")
 				print("Same thing for the second argument (optional) which serves for external SDL linking.")
 				print()
 				print("Options :")
 				print("  -d, --debug        : Enable debug traces.")
 				print("  -p, --pic          : Compile as \"Position Independant Code\".")
 				print("  -o, --output <path>: Specify output file path.")
-				print("                       Default is basename of first N file given, at current location,")
+				print("                       Default is basename of first C file given, at current location,")
 				print("                       and replacing extension by \".asm\".")
 				print()
 				print("Examples:")
-				print("  n-to-asm --debug my/dir/myFile.n")
-				print("  #Compile program my/dir/myFile.n into myFile.asm at current location, with debug traces.")
+				print("  c-to-asm --debug my/dir/myFile.c")
+				print("  #Compile program my/dir/myFile.c into myFile.asm at current location, with debug traces.")
 				print()
-				print("  n-to-asm f1.n,f2.n,f3.n core.sdl.cfg")
-				print("  #compile the 3 input files as one, with possible external SDL link with core.sdl.")
+				print("  c-to-asm f1.c,f2.c,f3.c mylib.sdl.cfg")
+				print("  #compile the 3 input files as one, with possible external SDL link with mylib.sdl.")
 				print()
 				print("Let's Code !                                  By I.A.")
 				exit(0)
@@ -148,7 +148,7 @@ def main(args):
 
 	#args: src paths (required)
 	if len(args_without_opts) == 0:
-		err("Missing N source input file(s).")
+		err("Missing C source input file(s).")
 
 	#gather them as one big file
 	srcSum       = ""
@@ -156,11 +156,11 @@ def main(args):
 	firstSrcName = '.'.join(os.path.basename(srcPaths[0]).split('.')[:-1])
 	for p in srcPaths:
 		if not os.path.isfile(p):
-			err("Unable to find N source input file \"" + p + "\".")
+			err("Unable to find C source input file \"" + p + "\".")
 		try:
 			srcSum += readFile(p)
 		except:
-			err("Unable to read from N source input file \"" + p + "\".")
+			err("Unable to read from C source input file \"" + p + "\".")
 
 	#args: sdl fp (optional)
 	sdls = []
@@ -183,11 +183,11 @@ def main(args):
 		outputPath = firstSrcName + ".asm"
 
 	#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< C compiler used as temporary alternative
-	cmd = ["gcc", "-nostdlib", "-S", CWD + "/.n-to-asm/tmp.c", "-L" + CWD + "/.n-to-asm/"]
+	cmd = ["gcc", "-nostdlib", "-S", CWD + "/.c-to-asm/tmp.c", "-L" + CWD + "/.c-to-asm/"]
 
 	#tmp dir
-	os.system("rm -rf .n-to-asm/")
-	os.system("mkdir  .n-to-asm/")
+	os.system("rm -rf .c-to-asm/")
+	os.system("mkdir  .c-to-asm/")
 
 	#PIC
 	if PICEnabled:
@@ -197,10 +197,10 @@ def main(args):
 	for s in sdls:
 		rawName = os.path.basename(s).split('.')[0]
 		cmd.append("-l" + rawName)                  #remove ALL extensions
-		os.system("ln -s " + s + " " + CWD + "/.n-to-asm/lib" + rawName + ".so")
+		os.system("ln -s " + s + " " + CWD + "/.c-to-asm/lib" + rawName + ".so")
 
 	#src
-	writeFile(".n-to-asm/tmp.c", srcSum)
+	writeFile(".c-to-asm/tmp.c", srcSum)
 
 	#output path dir
 	outputPath_dir = os.path.dirname(os.path.abspath(outputPath))
@@ -213,7 +213,7 @@ def main(args):
 		p = subprocess.run(cmd, stdout=subprocess.PIPE)
 		print(p.stdout.decode(), end='')
 	except ImportError:
-		err("Failed to compile N sources to ASM, compilation errors occured.")
+		err("Failed to compile C sources to ASM, compilation errors occured.")
 
 	#output move
 	os.system("mv " + CWD + "/tmp.s " + outputPath)

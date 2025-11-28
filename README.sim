@@ -1,6 +1,6 @@
-t0c N to ASM Compiler
+t0c C to ASM Compiler
 
-l Compiler from \bN\b programs into \bAssembly\b (ASM).
+l Compiler from \bC\b programs into \bAssembly\b (ASM).
 
 b
 b
@@ -47,7 +47,7 @@ t1 Use
 t2 Install
 
 p If you have downloaded the compiler, you will have to extract it \
-completely to see a directory containing: \mn-to-asm.elf\m. \
+completely to see a directory containing: \mc-to-asm.elf\m. \
 This is your ready-to-use application directory so make sure to keep \
 it somewhere appropriate as long as you need it.
 
@@ -57,16 +57,16 @@ environment variable. That way, you will be able to access it as any \
 other shell command:
 "bash
 #example on Stark OS system
-ln --symbolic /MY/PATH/TO/n-to-asm.elf /usr/$USR/.cmd/n-to-asm
+ln --symbolic /MY/PATH/TO/c-to-asm.elf /usr/$USR/.cmd/c-to-asm
 "
 l Compiler is successfully installed.
 
 
 t2 Usage
 
-p Then, you can compile directly by giving some N files as argument:
+p Then, you can compile directly by giving some C files as argument:
 " bash
-n-to-asm prgm1.n,pgrm2.n
+c-to-asm prgm1.c,pgrm2.c
 "
 p Result will have the same name as the 1st given file, except for \
 the extension that will be turned into \m.asm\m.
@@ -74,7 +74,7 @@ the extension that will be turned into \m.asm\m.
 p Lots of options can be provided for different purposes. \
 Check out the help menu for more information:
 " bash
-n-to-asm --help
+c-to-asm --help
 "
 l There you go.
 
@@ -86,7 +86,7 @@ you have used when installing. Also, if you created a link to access \
 the compiler as a variable, you should remove it as well:
 " bash
 #using the same example on Stark OS system
-rm /usr/$USR/.cmd/n-to-asm
+rm /usr/$USR/.cmd/c-to-asm
 "
 l Compiler is successfully uninstalled.
 
